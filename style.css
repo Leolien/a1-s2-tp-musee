@@ -1,11 +1,169 @@
+/* ===== Variables ===== */
+:root {
+  --bg: #f4f1ea;
+  --surface: #fffdf8;
+  --text: #17223b;
+  --muted: #4a5468;
+  --accent: #bc743f;
+  --accent-dark: #83502c;
+  --accent-darker: #6a3f22;
+  --focus: #168482;
+  --radius: 12px;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+}
+
+/* ===== Base ===== */
 * { box-sizing: border-box; }
-body { margin: 0; font-family: Arial, sans-serif; background: #f4f1ea; color: #17223b; line-height: 1.6; }
-header, main, footer { max-width: 920px; margin: auto; padding: 24px; }
-header { border-bottom: 2px solid #bc743f; }
-h1 { line-height: 1.15; font-size: clamp(2rem, 5vw, 3.2rem); }
-.eyebrow { text-transform: uppercase; letter-spacing: 0.12em; }
-a { color: #83502c; }
-.card { padding: 24px; margin: 20px 0; border: 1px solid #bc743f; border-radius: 12px; }
-button { padding: 12px 18px; background: #83502c; color: #fff; border: 0; border-radius: 8px; cursor: pointer; font-size: 1rem; }
-button:focus-visible, a:focus-visible { outline: 3px solid #168482; outline-offset: 3px; }
-footer { font-size: 0.9rem; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+header, main, footer {
+  max-width: 920px;
+  margin: auto;
+  padding: var(--space-md);
+}
+
+/* ===== Hiérarchie des titres ===== */
+h1, h2, h3 {
+  margin: 0 0 var(--space-sm);
+  line-height: 1.2;
+}
+
+h1 {
+  line-height: 1.15;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  margin-top: var(--space-lg);
+}
+
+/* Le premier titre d'un bloc n'a pas besoin de marge au-dessus */
+main > h2:first-child,
+.card > h2:first-child { margin-top: 0; }
+
+.card h2 { font-size: clamp(1.2rem, 2.5vw, 1.45rem); }
+
+p { margin: 0 0 var(--space-sm); }
+
+/* ===== En-tête ===== */
+header {
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 2px solid var(--accent);
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--accent-dark);
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+nav a {
+  display: inline-block;
+  padding: var(--space-xs) 0;
+  font-weight: bold;
+}
+
+/* ===== Liens ===== */
+a { color: var(--accent-dark); text-underline-offset: 3px; }
+a:hover { color: var(--accent-darker); }
+
+/* ===== Contenu ===== */
+main {
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
+}
+
+/* ===== Carte ===== */
+.card {
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  background: var(--surface);
+  border: 1px solid var(--accent);
+  border-left-width: 5px;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(23, 34, 59, 0.06);
+}
+
+.card p { color: var(--muted); }
+.card > :last-child { margin-bottom: 0; }
+
+/* ===== Bouton ===== */
+button {
+  min-height: 44px; /* taille tactile confortable */
+  padding: 12px 18px;
+  margin: var(--space-xs) 0 var(--space-sm);
+  background: var(--accent-dark);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:hover { background: var(--accent-darker); }
+button:active { transform: translateY(1px); }
+
+button:focus-visible, a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* ===== Pied de page ===== */
+footer {
+  font-size: 0.9rem;
+  color: var(--muted);
+  border-top: 1px solid rgba(188, 116, 63, 0.4);
+  padding-bottom: var(--space-lg);
+}
+
+/* ===== Petit écran ===== */
+@media (max-width: 600px) {
+  :root {
+    --space-md: 1rem;
+    --space-lg: 1.75rem;
+  }
+
+  header, main, footer {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .card { padding: var(--space-sm); }
+
+  button {
+    width: 100%; /* bouton facile à toucher */
+    text-align: center;
+  }
+}
+
+/* ===== Mouvements réduits ===== */
+@media (prefers-reduced-motion: reduce) {
+  button { transition: none; }
+  button:active { transform: none; }
+}
