@@ -1,13 +1,14 @@
 /* ===== Variables ===== */
 :root {
-  --bg: #f4f1ea;
-  --surface: #fffdf8;
-  --text: #17223b;
-  --muted: #4a5468;
-  --accent: #bc743f;
-  --accent-dark: #83502c;
-  --accent-darker: #6a3f22;
-  --focus: #168482;
+  --bg: #f7f7fb;          /* blanc légèrement teinté */
+  --surface: #ffffff;     /* blanc pur */
+  --text: #111111;        /* noir */
+  --navy: #1b2a4a;        /* bleu navy */
+  --muted: #3d4660;
+  --accent: #8b6fd6;      /* violet clair (bordures) */
+  --accent-dark: #7457c4; /* violet moyen (bouton, liens) */
+  --accent-darker: #1b2a4a; /* survol : navy */
+  --focus: #1b2a4a;
   --radius: 12px;
   --space-xs: 0.5rem;
   --space-sm: 1rem;
@@ -35,6 +36,7 @@ header, main, footer {
 
 /* ===== Hiérarchie des titres ===== */
 h1, h2, h3 {
+  color: var(--navy);
   margin: 0 0 var(--space-sm);
   line-height: 1.2;
 }
@@ -103,9 +105,9 @@ main {
   margin: var(--space-md) 0;
   background: var(--surface);
   border: 1px solid var(--accent);
-  border-left-width: 5px;
+  border-left: 5px solid var(--navy);
   border-radius: var(--radius);
-  box-shadow: 0 2px 8px rgba(23, 34, 59, 0.06);
+  box-shadow: 0 2px 8px rgba(27, 42, 74, 0.08);
 }
 
 .card p { color: var(--muted); }
@@ -138,7 +140,7 @@ button:focus-visible, a:focus-visible {
 footer {
   font-size: 0.9rem;
   color: var(--muted);
-  border-top: 1px solid rgba(188, 116, 63, 0.4);
+  border-top: 1px solid rgba(139, 111, 214, 0.4);
   padding-bottom: var(--space-lg);
 }
 
